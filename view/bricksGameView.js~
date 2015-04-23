@@ -97,8 +97,8 @@ function BrickGameView(){
 	}
 
 	this.triggerBrickFall = function(b){
-		b.style['fill'] = '#D7EBD0';
-		//b.style.fill = "url(#SadSmile)";
+		//b.style['fill'] = '#D7EBD0';
+		b.style.fill = "url(#SadSmile)";
 		b.innerHTML = '<animateTransform attributeName="transform" attributeType="XML" type="translate" from="0 0" to="0 ' + (brickFallDestVal) +'" dur="3s" repeatCount="indefinite"/>';
 		b.innerHTML += '<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 0 0" to="5 0 0" dur="3s" repeatCount="indefinite"></animateTransform>';
 		setTimeout(this.removeBrick, brickFallInterval, b, this);	
@@ -214,7 +214,7 @@ function createBrick(x, y, width, height){
 			b.setAttribute('class','brick');
 			b.setAttribute('rx', 20);
 			b.setAttribute('ry', 20);
-			//b.style.fill = "url(#HappySmile)";
+			b.style.fill = "url(#HappySmile)";
 	return b;			
 }
 
