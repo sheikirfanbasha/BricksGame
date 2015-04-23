@@ -97,8 +97,9 @@ function BrickGameView(){
 	}
 
 	this.triggerBrickFall = function(b){
-		b.style['fill'] = '#D7EBD0';
+		//b.style['fill'] = '#D7EBD0';
 		//b.style.fill = "url(#SadSmile)";
+		b.setAttributeNS("http://www.w3.org/1999/xlink",'xlink:href',"#SadSmileRect");
 		b.innerHTML = '<animateTransform attributeName="transform" attributeType="XML" type="translate" from="0 0" to="0 ' + (brickFallDestVal) +'" dur="3s" repeatCount="indefinite"/>';
 		b.innerHTML += '<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 0 0" to="5 0 0" dur="3s" repeatCount="indefinite"></animateTransform>';
 		setTimeout(this.removeBrick, brickFallInterval, b, this);	
@@ -205,8 +206,9 @@ function createStars(){
 }
 
 function createBrick(x, y, width, height){
+	/*
+	//for creating brick with background as solid fill color
 	var b = document.createElementNS("http://www.w3.org/2000/svg", 'rect');
-			//brick = new Rect(x, y, width, height);
 			b.setAttribute('x', x);
 			b.setAttribute('y', y);
 			b.setAttribute('width', width);
@@ -215,7 +217,16 @@ function createBrick(x, y, width, height){
 			b.setAttribute('rx', 20);
 			b.setAttribute('ry', 20);
 			//b.style.fill = "url(#HappySmile)";
-	return b;			
+	return b;	*/	
+	//var b = document.createElementNS("http://www.w3.org/2000/svg", 'rect');
+
+	//for creating bricks with background as smiley
+	var b = document.createElementNS("http://www.w3.org/2000/svg", 'use');
+			b.setAttributeNS("http://www.w3.org/1999/xlink",'xlink:href',"#HappySmileRect");
+			b.setAttribute('x', x);
+			b.setAttribute('y', y);
+			b.setAttribute('class','brick');
+	return b;	
 }
 
 function getMessageBGScreen(){
